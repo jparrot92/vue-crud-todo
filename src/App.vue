@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <b-container>
+      <b-nav tabs>
+        <b-nav-item exact exact-active-class="active" to="/todos">
+          Listado de todos
+        </b-nav-item>
+        <b-nav-item exact exact-active-class="active" to="/todos/create">
+          Formulario de alta de todos
+        </b-nav-item>
+      </b-nav>
+      <router-view/>
+    </b-container>
   </div>
 </template>
-
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
