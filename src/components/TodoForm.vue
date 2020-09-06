@@ -1,7 +1,31 @@
 <template>
-  <div>
+    <b-form @submit.prevent="$emit('processTodo', todo)">
+        <b-form-group
+            id="todo"
+            label="Todo"
+            label-for="todo"
+        >
+            <b-form-input
+                autocomplete="off"
+                id="todo"
+                v-model="todo.text"
+                :state="!$v.todo.text.$invalid"
+                placeholder="Introduce la tarea"
+                @input="$v.todo.$touch"
+            ></b-form-input>
+            <b-form-invalid-feedback id="todoInfo" v-if="$v.todo.$dirty">
+                Este campo es requerido y debe tener una longitud mínima de 4
+            </b-form-invalid-feedback>
+        </b-form-group>
 
-  </div>
+        <b-button
+            type="submit"
+            variant="primary"
+            :disabled="$v.todo.$invalid"
+        >
+            {{ todoSubmit }}
+        </b-button>
+    </b-form>
 </template>
 
 <script>
